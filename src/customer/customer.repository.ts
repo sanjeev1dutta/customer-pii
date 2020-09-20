@@ -107,8 +107,6 @@ export class CustomerRepository extends Repository<Customer> {
   }
 
   async deleteCustomer(id: string, user: User): Promise<void> {
-    //await this.delete({ distributerid: user.id, customers: [{ id: id }] });
-    console.log(id, user.id);
     await this.getCustomerById(id, user);
     await this.delete({
       id,

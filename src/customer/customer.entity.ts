@@ -8,13 +8,13 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['id'])
+@Unique(['id']) //to prevent duplicate customer at database level
 export class Customer extends BaseEntity {
   @ObjectIdColumn()
   _id: string; //mongodb specific
 
   @PrimaryColumn()
-  //is auumed to received from ditributer platform side,
+  //is auumed to be receive from ditributer platform side,
   //when creating booking on customer's behalf
   id: string;
 
