@@ -23,6 +23,7 @@ export class CustomerRepository extends Repository<Customer> {
       emailaddress,
       dateofbirth,
       telephonenumber,
+      distributorid,
     } = createCustomerDto;
 
     const customer = new Customer();
@@ -32,7 +33,7 @@ export class CustomerRepository extends Repository<Customer> {
     customer.emailaddress = emailaddress;
     customer.dateofbirth = dateofbirth;
     customer.telephonenumber = telephonenumber;
-    customer.distributorid = user.id;
+    customer.distributorid = distributorid; //user.id;
 
     try {
       await customer.save();

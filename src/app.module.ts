@@ -1,3 +1,4 @@
+import { PIIDB } from 'config';
 import { AuthModule } from 'src/auth/auth.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -11,7 +12,7 @@ import { User } from './auth/user.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: 'mongodb://localhost/carrental1',
+      url: PIIDB.URL, //'mongodb://localhost/carrental1',
       synchronize: true,
       useUnifiedTopology: true, //mongodb specific - purpose not clear, perhaps to be used to handle some depreciation in future
       entities: [Customer, User],

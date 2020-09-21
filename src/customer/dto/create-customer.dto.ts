@@ -4,9 +4,10 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   id: string;
 
+  @IsNotEmpty()
   fullname: string;
 
-  // @IsNotEmpty()
+  @IsNotEmpty()
   homeaddress: string;
 
   @IsNotEmpty()

@@ -19,9 +19,11 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { CustomerService } from './customers.service';
 import { Customer } from './customer.entity';
 import { CreateCustomerDto } from './dto/create-customer.dto';
+import { ApiBearerAuth } from '@nestjs/swagger/dist/decorators/api-bearer.decorator';
 
 @Controller('customers')
 @UseGuards(AuthGuard())
+@ApiBearerAuth()
 export class CustomersController {
   constructor(private customerService: CustomerService) {}
 
