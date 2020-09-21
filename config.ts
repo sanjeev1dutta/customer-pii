@@ -1,3 +1,3 @@
 export const PIIDB = {
-  URL: 'mongodb://localhost/carrental2',
+  URL: 'mongodb://localhost/carrental1',
 };

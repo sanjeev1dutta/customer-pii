@@ -16,7 +16,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag(
       `Car Rental Gateway PII endpoint (${
-        piidb == 'EU' ? 'European Union' : 'United States'
+        piidb == 'EU' || piidb == 'UK' ? 'European Union' : 'United States'
       })`,
     )
     .build();
