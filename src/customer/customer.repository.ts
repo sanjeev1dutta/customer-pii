@@ -36,9 +36,12 @@ export class CustomerRepository extends Repository<Customer> {
     try {
       await customer.save();
     } catch (error) {
-      if (error.code === 11000) {
-        throw new ConflictException(`Customer already exists`);
-      } else {
+      // if (error.code === 11000) {
+      //   throw new ConflictException(`Customer already exists`);
+      // } else {
+      //   throw new InternalServerErrorException();
+      // }
+      if (error.code !== 11000) {
         throw new InternalServerErrorException();
       }
     }
