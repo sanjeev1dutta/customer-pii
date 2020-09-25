@@ -2,11 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
+import * as config from 'config';
 
 async function bootstrap() {
+  const serverConfig = config.get('server');
+
   const app = await NestFactory.create(AppModule);
-  const port = process?.env?.PORT || 4000;
-  const piidb = process?.env?.PIIDB?.toUpperCase() || 'EU';
+  const port = process?.env?.PORT || serverConfig.port;
+  const region = process?.env?.REGION?.toUpperCase() || serverConfig.region;
 
   app.enableCors();
   const options = new DocumentBuilder()
@@ -16,7 +19,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag(
       `Car Rental Gateway PII endpoint (${
-        piidb == 'EU' || piidb == 'UK' ? 'European Union' : 'United States'
+        region == 'EU' || region == 'UK' ? 'European Union' : 'United States'
       })`,
     )
     .build();

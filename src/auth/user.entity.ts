@@ -3,11 +3,10 @@ import {
   Column,
   Entity,
   ObjectIdColumn,
-  // OneToMany,
   PrimaryColumn,
   Unique,
 } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 
 @Entity()
 @Unique(['username']) // to prevent duplicate username at database level

@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
 import { ApiClient } from './utility/api-client.utility';
+import * as config from 'config';
 
 @Injectable()
 export class AuthService {
@@ -18,23 +19,15 @@ export class AuthService {
   async signIn(
     authCredentialDto: AuthCredentialDto,
   ): Promise<{ accessToken: string }> {
-    // const username = await this.userRepository.validateUserPassword(
-    //   authCredentialDto,
-    // );
-
-    // if (!username) {
-    //   throw new UnauthorizedException('Invalid user credentials');
-    // }
     const username = authCredentialDto.username;
     const tokenPayload: JwtPayload = { username };
-    //const tokenPayload: JwtPayload = { username };
     const accessToken = await this.jwtService.sign(tokenPayload);
     return { accessToken };
   }
 
   getUser(username: string): Promise<any> {
-    //}, callback) {
+    const custEndpointUrl = `${config.get('auth.url')}/${username}`;
     const client = new ApiClient(this.http);
-    return client.get(username); //, callback);
+    return client.get(custEndpointUrl);
   }
 }

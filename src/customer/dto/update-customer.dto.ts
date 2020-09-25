@@ -7,11 +7,6 @@ import {
 } from 'class-validator';
 
 export class UpdateCustomerDto {
-  // @IsString()
-  // @MinLength(36)
-  // @MaxLength(36)
-  // id: string;
-
   @IsString()
   @MinLength(1)
   @MaxLength(30)

@@ -14,7 +14,7 @@ export class Customer extends BaseEntity {
   _id: string; //mongodb specific
 
   @PrimaryColumn()
-  //is auumed to be receive from ditributer platform side,
+  //is assumed to be receive on ditributer platform,
   //when creating booking on customer's behalf
   id: string;
 

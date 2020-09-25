@@ -3,12 +3,10 @@ import { HttpService } from '@nestjs/common';
 export class ApiClient {
   constructor(private readonly http: HttpService) {}
 
-  get(data): Promise<any> {
+  get(url): Promise<any> {
     try {
-      const custEndpointUrl = 'http://localhost:3000/auth';
-      console.log(`${custEndpointUrl}/${data}`);
       return this.http
-        .get(`${custEndpointUrl}/${data}`, {
+        .get(url, {
           //   headers: {
           //     Authorization: `${data}`,
           //   },
