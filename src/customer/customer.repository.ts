@@ -4,7 +4,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { User } from 'src/auth/user.entity';
+import { User } from 'src/auth/user';
 import { Customer } from './customer.entity';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { SearchCustomerDto } from './dto/search-customer.dto';
@@ -23,7 +23,6 @@ export class CustomerRepository extends Repository<Customer> {
       emailaddress,
       dateofbirth,
       telephonenumber,
-      distributorid,
     } = createCustomerDto;
 
     const customer = new Customer();
@@ -33,8 +32,7 @@ export class CustomerRepository extends Repository<Customer> {
     customer.emailaddress = emailaddress;
     customer.dateofbirth = dateofbirth;
     customer.telephonenumber = telephonenumber;
-    customer.distributorid = distributorid; //user.id;
-
+    customer.distributorid = user.id;
     try {
       await customer.save();
     } catch (error) {

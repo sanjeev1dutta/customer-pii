@@ -1,6 +1,6 @@
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { CustomerRepository } from './customer.repository';
-import { User } from '../auth/user.entity';
+import { User } from '../auth/user';
 import { Injectable } from '@nestjs/common';
 import { SearchCustomerDto } from './dto/search-customer.dto';
 import { InjectRepository } from '@nestjs/typeorm';

@@ -7,22 +7,25 @@ import {
   Patch,
   Post,
   Query,
+  UseFilters,
   UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
-import { User } from 'src/auth/user.entity';
+import { User } from 'src/auth/user';
 import { SearchCustomerDto } from './dto/search-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { CustomerService } from './customers.service';
 import { Customer } from './customer.entity';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { ApiBearerAuth } from '@nestjs/swagger/dist/decorators/api-bearer.decorator';
+import { HttpExceptionFilter } from 'src/filter/http-exception.filter';
 
 @Controller('customers')
 @UseGuards(AuthGuard())
+@UseFilters(new HttpExceptionFilter())
 @ApiBearerAuth()
 export class CustomersController {
   constructor(private customerService: CustomerService) {}
