@@ -4,6 +4,6 @@ export class SearchCustomerDto {
   // fullname: string;
   // emailaddress: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   search: string;
 }
